@@ -14,5 +14,5 @@ class Bike(db.Model):
     brand = db.Column(db.String)
     color = db.Column(db.String)
     bike_id = db.Column(db.String)
-    assets = db.Column(db.JSON)
+    assets = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=lambda: datetime.utcnow())

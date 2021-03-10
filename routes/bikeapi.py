@@ -80,8 +80,18 @@ def create_bike():
         assets=bike_details.get("assets"),
     )
     db.session.add(b)
+    bike = b
     db.session.commit()
-    return jsonify({"success": True})
+    return jsonify({"success": True, "bike": dict(
+        brand=bike.brand,
+        color=bike.color,
+        bike_id=bike.bike_id,
+        firstName=bike.first_name,
+        lastName=bike.last_name,
+        city=bike.city,
+        phone=bike.phone,
+        secondary_phone=bike.secondary_phone,
+    )})
 
 
 @bikeapi_bp.route("/bike/<bike_id>", methods=["GET"])

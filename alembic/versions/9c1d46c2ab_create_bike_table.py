@@ -27,7 +27,7 @@ def upgrade():
                     sa.Column("city", sa.String(255)),
                     sa.Column("phone", sa.String(255)),
                     sa.Column("secondary_phone", sa.String(255)),
-                    sa.Column("assets", sa.JSON),
+                    sa.Column("assets", sa.Text),
                     sa.Column("created_at", sa.DateTime),
                     )
 
