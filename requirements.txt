@@ -1,0 +1,7 @@
+flask
+flask-cors
+cloudinary
+python-dotenv
+Flask-SQLAlchemy
+pymysql
+requests
