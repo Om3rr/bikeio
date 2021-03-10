@@ -1,3 +1,4 @@
+import json
 import os
 from functools import wraps
 
@@ -77,12 +78,12 @@ def create_bike():
         city=bike_details.get("city"),
         secondary_phone=bike_details.get("secondary_phone"),
         bike_id=bike_details.get("bike_id"),
-        assets=bike_details.get("assets"),
+        assets=json.dumps(bike_details.get("assets")),
     )
     db.session.add(b)
-    bike = b
     db.session.commit()
-    return jsonify({"success": True, "bike": dict(
+    bike = b
+    res = dict(
         brand=bike.brand,
         color=bike.color,
         bike_id=bike.bike_id,
@@ -91,7 +92,10 @@ def create_bike():
         city=bike.city,
         phone=bike.phone,
         secondary_phone=bike.secondary_phone,
-    )})
+    )
+    return jsonify({"success": True, "result": {
+        "bike": res}
+    })
 
 
 @bikeapi_bp.route("/bike/<bike_id>", methods=["GET"])
